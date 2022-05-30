@@ -1,6 +1,7 @@
-import {Box} from "@chakra-ui/react";
 import type {NextPage} from "next";
 import Head from "next/head";
+
+import Hero from "../components/Hero";
 
 const Home: NextPage = () => {
   return (
@@ -10,7 +11,7 @@ const Home: NextPage = () => {
         <meta content="Mauro Leonel Quiroga personal Portfolio" name="description" />
         <link href="/favicon.ico" rel="icon" />
       </Head>
-      <Box>Hello world</Box>
+      <Hero />
     </>
   );
 };
