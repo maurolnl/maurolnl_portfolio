@@ -30,6 +30,8 @@ const ProjectLayout: React.FC<Props> = ({
   const MotionBox = motion(Box);
   const MotionStack = motion(Stack);
 
+  const isOutOfContainer = useBreakpointValue({md: true});
+
   const headingVariant = useBreakpointValue({
     base: "mobile",
     sm: "sm",
@@ -61,12 +63,12 @@ const ProjectLayout: React.FC<Props> = ({
               >
                 <ForwardLink
                   href={prevLink}
-                  padding={["2px 10px", "2px 10px", "5px 20px"]}
+                  padding={["2px 10px", "2px 10px", "5px 25px"]}
                   variant="invert"
                 >
                   Prev
                 </ForwardLink>
-                <ForwardLink href={nextLink} padding={["2px 10px", "2px 10px", "5px 20px"]}>
+                <ForwardLink href={nextLink} padding={["2px 10px", "2px 10px", "5px 25px"]}>
                   Next
                 </ForwardLink>
               </Stack>
@@ -104,7 +106,12 @@ const ProjectLayout: React.FC<Props> = ({
               >
                 <Image alt={"hero-me"} layout="fill" objectFit="cover" src={imageSrc} />
               </MotionBox>
-              <Stack direction="row">
+              <MotionStack
+                direction="row"
+                drag={!isOutOfContainer ? "x" : undefined}
+                dragConstraints={{left: -250, right: 0}}
+                dragElastic={0.2}
+              >
                 {badges.map((badge, index) => {
                   return (
                     <Badge key={index} color="black">
@@ -112,17 +119,17 @@ const ProjectLayout: React.FC<Props> = ({
                     </Badge>
                   );
                 })}
-              </Stack>
+              </MotionStack>
             </Stack>
           </Stack>
           {children}
         </Stack>
 
         <Stack direction="row" display={["none", "none", "none", "none", "none", "flex"]} gap={4}>
-          <ForwardLink href={prevLink} padding={["5px 20px"]} variant="invert">
+          <ForwardLink href={prevLink} padding={["5px 25px"]} variant="invert">
             Prev
           </ForwardLink>
-          <ForwardLink href={nextLink} padding={["5px 20px"]}>
+          <ForwardLink href={nextLink} padding={["5px 25px"]}>
             Next
           </ForwardLink>
         </Stack>
