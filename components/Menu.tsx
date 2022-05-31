@@ -57,7 +57,7 @@ const Menu: React.FC<Props> = ({isOpen, placement, size, onClose}) => {
   return (
     <Drawer isOpen={isOpen} placement={placement} size={size} onClose={onClose}>
       <DrawerOverlay />
-      <DrawerContent backgroundColor="brand.400">
+      <DrawerContent backgroundColor="brand.900">
         <DrawerHeader paddingY="none">
           <Stack alignItems="center" direction="row" height="110px" justifyContent="space-between">
             <Box height={"41px"} position="relative" width={"116px"}>

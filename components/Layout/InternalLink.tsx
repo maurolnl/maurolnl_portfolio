@@ -8,7 +8,8 @@ interface Props {
   children?: React.ReactNode;
   variant?: string;
   isExternal?: boolean;
-  isHoverable?: boolean;
+  isActive?: boolean;
+  isNotHoverable?: boolean;
   onClick?: () => void;
 }
 
@@ -16,15 +17,16 @@ const InternalLink: React.FC<Props> = ({
   href,
   variant,
   isExternal,
-  isHoverable,
+  isNotHoverable,
   onClick,
   children,
+  isActive,
 }) => {
   const MotionLink = motion(Link);
 
   return (
     <NextLink passHref href={href}>
-      {!isHoverable ? (
+      {isNotHoverable ? (
         <MotionLink
           _hover={{textDecoration: "none"}}
           isExternal={isExternal}
@@ -35,12 +37,14 @@ const InternalLink: React.FC<Props> = ({
         </MotionLink>
       ) : (
         <MotionLink
-          _hover={{textDecoration: "none"}}
+          _hover={{textDecoration: "none", color: "brand.700", borderColor: "brand.700"}}
           borderBottom="2px solid transparent"
+          borderColor={isActive ? "brand.700" : undefined}
+          color={isActive ? "brand.700" : undefined}
           isExternal={isExternal}
-          transition={{duration: 1, ease: "easeInOut"}}
+          transition={{duration: 0.4, ease: "easeInOut"}}
           variant={variant}
-          whileHover={{borderBottom: "2px solid black"}}
+          whileHover={{y: -1, opacity: 0.9}}
           onClick={onClick}
         >
           {children}
