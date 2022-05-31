@@ -1,7 +1,9 @@
-import {Box, Container} from "@chakra-ui/react";
+import {Box, Container, Stack} from "@chakra-ui/react";
 import React from "react";
 
 import Navbar from "../Navbar";
+
+import InternalLink from "./InternalLink";
 
 interface Props {
   children?: React.ReactNode;
@@ -65,7 +67,26 @@ const Layout: React.FC<Props> = ({children}) => {
         borderTop="1px solid"
         height={["50px", "50px", "50px", "80px"]}
         maxW="100vw"
-      />
+      >
+        <Stack
+          alignItems="center"
+          direction="row"
+          display={["flex", "flex", "flex", "none", "none", "none"]}
+          height="100%"
+          justifyContent="center"
+          width="100%"
+        >
+          <InternalLink isExternal href="https://www.linkedin.com/in/maurolnl/" variant="sm">
+            LinkedIn
+          </InternalLink>
+          <InternalLink isExternal href="mailto:maurolquiroga@outlook.com" variant="sm">
+            Email
+          </InternalLink>
+          <InternalLink isExternal href="https://github.com/maurolnl" variant="sm">
+            Github
+          </InternalLink>
+        </Stack>
+      </Box>
     </Box>
   );
 };
