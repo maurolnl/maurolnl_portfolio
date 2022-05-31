@@ -80,6 +80,20 @@ const components = {
         lineHeight: "0.85",
         letterSpacing: "1px",
       },
+      headingLinkLg: {
+        fontSize: "64px",
+        fontWeight: 600,
+        lineHeight: "0.9",
+        letterSpacing: "0px",
+        textTransform: "uppercase",
+      },
+      headingLinkMd: {
+        fontSize: "56px",
+        fontWeight: 600,
+        lineHeight: "0.9",
+        letterSpacing: "0px",
+        textTransform: "uppercase",
+      },
     },
   },
   Text: {
@@ -118,6 +132,41 @@ const components = {
         fontSize: "16px",
       },
     },
+    sizes: {
+      sm: {
+        fontWeight: 600,
+        color: "neutral.900",
+        letterSpacing: "1.5px",
+        fontSize: "16px",
+      },
+      md: {
+        fontWeight: 500,
+        color: "neutral.900",
+        letterSpacing: "1px",
+        fontSize: "18px",
+      },
+      lg: {
+        fontWeight: 500,
+        color: "neutral.900",
+        letterSpacing: "1px",
+        fontSize: "20px",
+      },
+    },
+  },
+  Button: {
+    baseStyle: {
+      fontWeight: 500,
+      color: "neutral.900",
+      fontSize: "20px",
+    },
+    variants: {
+      sm: {
+        fontWeight: 600,
+        color: "neutral.900",
+        letterSpacing: "1px",
+        fontSize: "16px",
+      },
+    },
   },
 };
 
@@ -126,4 +175,8 @@ const fonts = {
   body: `'Poppins', system-ui, sans-serif`,
 };
 
-export const theme = extendTheme({colors, sizes, styles, fonts, components, breakpoints});
+const shadows = {
+  outline: "0 0 0 3px rgb(52 84 110 / 54%)",
+};
+
+export const theme = extendTheme({colors, sizes, styles, fonts, components, breakpoints, shadows});
