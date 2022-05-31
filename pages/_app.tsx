@@ -18,10 +18,10 @@ function MyApp({Component, pageProps, router}: AppProps) {
             <MotionBox
               backgroundColor="black"
               color="black"
-              exit={{x: ["-110vw", "0vw", "0vw"], opacity: [1, 1, 0]}}
+              exit={{x: ["-110vw", "1vw", "1vw"], opacity: [1, 1, 0]}}
               height="100vh"
               initial={{x: "-110vw"}}
-              left="-50px"
+              left={["-30px", "-50px"]}
               position="absolute"
               top="0px"
               transition={{type: "tween", times: [0, 0.5, 1], duration: 1.1, ease: "easeInOut"}}
