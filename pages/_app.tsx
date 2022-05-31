@@ -3,9 +3,11 @@ import "@fontsource/poppins/500.css";
 import type {AppProps} from "next/app";
 import {Box, ChakraProvider} from "@chakra-ui/react";
 import {AnimatePresence, motion} from "framer-motion";
+import {DefaultSeo} from "next-seo";
 
 import {theme} from "../styles/theme";
 import Layout from "../components/Layout/Layout";
+import SEO from "../next-seo.config";
 
 function MyApp({Component, pageProps, router}: AppProps) {
   const MotionBox = motion(Box);
@@ -29,6 +31,7 @@ function MyApp({Component, pageProps, router}: AppProps) {
               zIndex="999999"
             />
             <MotionBox exit={{opacity: 0}} height="100%" transition={{delay: 0.5, duration: 0}}>
+              <DefaultSeo {...SEO} />
               <Component {...pageProps} />
             </MotionBox>
           </MotionBox>
