@@ -1,13 +1,17 @@
 import React from "react";
 import type {NextPage} from "next";
 import {Link, Stack, Text} from "@chakra-ui/react";
-import Image from "next/image";
+import {motion} from "framer-motion";
 
 import aerolab_challenge from "../../assets/projects/aerolab_challenge.png";
 import ProjectLayout from "../../components/Layout/ProjectLayout";
+import {upAnimation} from "../../animation/animations";
 
 const Index: NextPage = () => {
   const badges = ["NEXT JS", "Styled Components", "Framer Motion", "Jest"];
+
+  const MotionStack = motion(Stack);
+  const MotionText = motion(Text);
 
   return (
     <ProjectLayout
@@ -16,7 +20,13 @@ const Index: NextPage = () => {
       nextLink="/projects/wiseguys"
       title="Aerolab Frontend Challenge"
     >
-      <Stack gap={2}>
+      <MotionStack
+        animate="visible"
+        gap={2}
+        initial="hidden"
+        transition="transition"
+        variants={upAnimation}
+      >
         <Text>
           This is a project build as a solution to{" "}
           <Link isExternal _hover={{color: "aerolab"}} fontWeight="600" href="https://aerolab.us/">
@@ -37,8 +47,8 @@ const Index: NextPage = () => {
           </Link>
           .
         </Text>
-      </Stack>
-      <Text>
+      </MotionStack>
+      <MotionText animate="visible" initial="hidden" transition="transition" variants={upAnimation}>
         You can visit the demo{" "}
         <Link
           isExternal
@@ -49,7 +59,7 @@ const Index: NextPage = () => {
           here
         </Link>
         .
-      </Text>
+      </MotionText>
     </ProjectLayout>
   );
 };

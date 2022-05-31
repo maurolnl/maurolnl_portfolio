@@ -1,12 +1,17 @@
 import React from "react";
 import {NextPage} from "next";
 import {Heading, Link, Stack, Text} from "@chakra-ui/react";
+import {motion} from "framer-motion";
 
 import covid from "../../assets/projects/covid.png";
 import ProjectLayout from "../../components/Layout/ProjectLayout";
+import {upAnimation} from "../../animation/animations";
 
 const Index: NextPage = () => {
   const badges = ["React JS", "TypeScipt", "CSS Modules", "Wouter"];
+
+  const MotionStack = motion(Stack);
+  const MotionText = motion(Text);
 
   return (
     <ProjectLayout
@@ -16,7 +21,13 @@ const Index: NextPage = () => {
       prevLink="/projects/wiseguys"
       title="Covid Tracker"
     >
-      <Stack gap={2}>
+      <MotionStack
+        animate="visible"
+        gap={2}
+        initial="hidden"
+        transition="transition"
+        variants={upAnimation}
+      >
         <Text>
           In this project I was looking to learn about pagination and why not, build something with
           the covid API.
@@ -33,8 +44,8 @@ const Index: NextPage = () => {
           </Link>
           , I had to fetch this data carefully to not ruin the app performance.
         </Text>
-      </Stack>
-      <Text>
+      </MotionStack>
+      <MotionText animate="visible" initial="hidden" transition="transition" variants={upAnimation}>
         You can visit the{" "}
         <Link
           isExternal
@@ -54,7 +65,7 @@ const Index: NextPage = () => {
           here
         </Link>
         .
-      </Text>
+      </MotionText>
     </ProjectLayout>
   );
 };

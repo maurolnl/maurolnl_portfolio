@@ -1,9 +1,13 @@
 import {Box, Heading, Stack, useBreakpointValue} from "@chakra-ui/react";
 import React from "react";
 import Image from "next/image";
+import {motion} from "framer-motion";
+
+import {sideAnimation, upAnimation} from "../../animation/animations";
 
 import ForwardLink from "./ForwardLink";
 import Badge from "./Badge";
+import HeadingAnimated from "./HeadingAnimated";
 
 interface Props {
   title: string;
@@ -22,6 +26,10 @@ const ProjectLayout: React.FC<Props> = ({
   badges,
   children,
 }) => {
+  const MotionHeading = motion(Heading);
+  const MotionBox = motion(Box);
+  const MotionStack = motion(Stack);
+
   const headingVariant = useBreakpointValue({
     base: "mobile",
     sm: "sm",
@@ -45,9 +53,7 @@ const ProjectLayout: React.FC<Props> = ({
         <Stack gap={[2, 2, 2, 2, 2, 7]}>
           <Stack gap={2}>
             <Stack alignItems="center" direction="row" justifyContent={"space-between"}>
-              <Heading color={"neutral.900"} size={headingVariant}>
-                Projects
-              </Heading>
+              <HeadingAnimated size={headingVariant} text={"Projects"} />
               <Stack
                 direction="row"
                 display={["flex", "flex", "flex", "flex", "flex", "none"]}
@@ -65,9 +71,18 @@ const ProjectLayout: React.FC<Props> = ({
                 </ForwardLink>
               </Stack>
             </Stack>
-            <Heading as="h3" color="neutral.900" size={subHeadingVariant} whiteSpace="break-spaces">
+            <MotionHeading
+              animate="visible"
+              as="h3"
+              color="neutral.900"
+              initial="hidden"
+              size={subHeadingVariant}
+              transition="transition"
+              variants={upAnimation}
+              whiteSpace="break-spaces"
+            >
               {title}
-            </Heading>
+            </MotionHeading>
             <Stack
               alignItems={"flex-start"}
               display={["flex", "flex", "flex", "flex", "flex", "none"]}
@@ -75,16 +90,20 @@ const ProjectLayout: React.FC<Props> = ({
               gap={3}
               justifyContent="flex-start"
             >
-              <Box
+              <MotionBox
+                animate="visible"
                 boxShadow={"#c0bcb3 5px 5px 3px 0px"}
                 display={["flex", "flex", "flex", "flex", "flex", "none"]}
                 height={[230, 300, 490]}
+                initial="hidden"
                 maxW={["100%", "100%", "100%", "100%", "inherit"]}
                 position="relative"
+                transition="transition"
+                variants={sideAnimation}
                 width={872}
               >
                 <Image alt={"hero-me"} layout="fill" objectFit="cover" src={imageSrc} />
-              </Box>
+              </MotionBox>
               <Stack direction="row">
                 {badges.map((badge, index) => {
                   return (
@@ -115,10 +134,23 @@ const ProjectLayout: React.FC<Props> = ({
         gap={3}
         justifyContent="flex-start"
       >
-        <Box boxShadow={"#c0bcb3 5px 5px 3px 0px"} height={490} position="relative" width={872}>
+        <MotionBox
+          animate={{x: 0, opacity: 1}}
+          boxShadow={"#c0bcb3 5px 5px 3px 0px"}
+          height={490}
+          initial={{x: 100, opacity: 0}}
+          position="relative"
+          transition={{duration: 1}}
+          width={872}
+        >
           <Image alt={"hero-me"} layout="fill" objectFit="cover" src={imageSrc} />
-        </Box>
-        <Stack direction="row">
+        </MotionBox>
+        <MotionStack
+          animate={{opacity: 1}}
+          direction="row"
+          initial={{opacity: 0}}
+          transition={{duration: 1}}
+        >
           {badges.map((badge, index) => {
             return (
               <Badge key={index} color="black">
@@ -126,7 +158,7 @@ const ProjectLayout: React.FC<Props> = ({
               </Badge>
             );
           })}
-        </Stack>
+        </MotionStack>
       </Stack>
     </Stack>
   );

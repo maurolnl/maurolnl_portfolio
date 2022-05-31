@@ -1,13 +1,18 @@
-import {Box, Button, Heading, Stack, useBreakpointValue} from "@chakra-ui/react";
+import {Box, Heading, Stack, useBreakpointValue} from "@chakra-ui/react";
 import React from "react";
 import Image from "next/image";
+import {motion} from "framer-motion";
 
 import image_test from "../assets/test.png";
+import {sideAnimation} from "../animation/animations";
 
 import SideLinks from "./SideLinks";
 import ForwardLink from "./Layout/ForwardLink";
+import HeadingAnimated from "./Layout/HeadingAnimated";
 
 const Hero = () => {
+  const MotionBox = motion(Box);
+
   const headingVariant = useBreakpointValue({
     base: "mobile",
     sm: "sm",
@@ -24,21 +29,21 @@ const Hero = () => {
         </Box>
         <Stack direction={"column"} gap={[2, 2, 2, 6]}>
           <Box>
-            <Heading as="h1" color="neutral.900" size={headingVariant}>
-              FRONTEND
-            </Heading>
-            <Heading as="h1" color="neutral.900" size={headingVariant}>
-              DEVELOPER
-            </Heading>
+            <HeadingAnimated as="h1" size={headingVariant} text="FRONTEND" />
+            <HeadingAnimated as="h1" size={headingVariant} text="DEVELOPER" />
           </Box>
-          <Box
+          <MotionBox
+            animate="visible"
             height={253}
+            initial="hidden"
             maxW={["100%", "100%", "inherit", "inherit"]}
             position="relative"
+            transition="transition"
+            variants={sideAnimation}
             width={596}
           >
             <Image priority alt={"hero-me"} layout="fill" objectFit="cover" src={image_test.src} />
-          </Box>
+          </MotionBox>
           <Box display={["block", "block", "block", "none"]}>
             <Heading color="neutral.900" display={"flex"} size={headingVariant}>
               QUIROGA MAURO LEONEL
@@ -59,17 +64,13 @@ const Hero = () => {
         <SideLinks />
         <Stack alignItems={"flex-end"} direction="column">
           <Box>
-            <Heading
-              color="neutral.900"
-              display={"flex"}
+            <HeadingAnimated
+              display="flex"
               justifyContent="flex-end"
               size={headingVariant}
-            >
-              QUIROGA
-            </Heading>
-            <Heading color="neutral.900" size={headingVariant}>
-              MAURO LEONEL
-            </Heading>
+              text="QUIROGA"
+            />
+            <HeadingAnimated size={headingVariant} text="MAURO LEONEL" />
           </Box>
         </Stack>
       </Box>
