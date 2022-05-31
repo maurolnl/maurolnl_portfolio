@@ -9,6 +9,7 @@ interface Props {
   display?: string | undefined;
   justifyContent?: string | undefined;
   textTransform?: string | undefined;
+  borderBottom?: string | undefined;
 }
 
 const HeadingAnimated: React.FC<Props> = ({
@@ -18,6 +19,7 @@ const HeadingAnimated: React.FC<Props> = ({
   text,
   display,
   justifyContent,
+  borderBottom,
 }) => {
   const MotionHeading = motion(Heading);
 
@@ -43,6 +45,7 @@ const HeadingAnimated: React.FC<Props> = ({
     <MotionHeading
       animate="visible"
       as={as}
+      borderBottom={borderBottom}
       color="neutral.900"
       display={display}
       initial="hidden"
