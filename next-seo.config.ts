@@ -1,7 +1,8 @@
 const title = undefined;
 const titleTemplate = "Mauro Leonel Quiroga | %s";
 const defaultTitle = "Mauro Leonel Quiroga | Portfolio";
-const description = "Frontend-developer focused and passionate about building a more usable web";
+const description =
+  "Frontend-developer focused and passionate about building a more usable and appealing web";
 
 const SEO = {
   title,
