@@ -86,7 +86,7 @@ const Menu: React.FC<Props> = ({isOpen, placement, size, onClose}) => {
             justifyContent="flex-end"
           >
             <Stack>
-              <InternalLink href={"/"} onClick={() => handleClose("/")}>
+              <InternalLink isMenu href={"/"} onClick={() => handleClose("/")}>
                 <HeadingAnimated
                   borderBottom={router.pathname === "/" ? "5px solid black" : undefined}
                   display="inline-block"
@@ -95,7 +95,7 @@ const Menu: React.FC<Props> = ({isOpen, placement, size, onClose}) => {
                   textTransform="uppercase"
                 />
               </InternalLink>
-              <InternalLink href={"/about"} onClick={() => handleClose("about")}>
+              <InternalLink isMenu href={"/about"} onClick={() => handleClose("about")}>
                 <HeadingAnimated
                   borderBottom={isAboutPage ? "5px solid black" : undefined}
                   display="inline-block"
@@ -104,7 +104,7 @@ const Menu: React.FC<Props> = ({isOpen, placement, size, onClose}) => {
                   textTransform="uppercase"
                 />
               </InternalLink>
-              <InternalLink href={"/projects"} onClick={() => handleClose("projects")}>
+              <InternalLink isMenu href={"/projects"} onClick={() => handleClose("projects")}>
                 <HeadingAnimated
                   borderBottom={isProjectsPage ? "5px solid black" : undefined}
                   display="inline-block"
@@ -115,6 +115,7 @@ const Menu: React.FC<Props> = ({isOpen, placement, size, onClose}) => {
               </InternalLink>
               <InternalLink
                 isExternal
+                isMenu
                 href={"/cv/Mauro_Leonel_Quiroga_CV_English.pdf"}
                 onClick={onClose}
               >
