@@ -42,7 +42,7 @@ const ForwardLink: React.FC<Props> = ({href, display, variant, padding, children
               whiteSpace="nowrap"
               width={"fit-content"}
             >
-              <ArrowBackIcon h={[4, 5]} paddingLeft={2} w={[6, 8]} />
+              <ArrowBackIcon h={[4, 5]} paddingLeft={2} transition="all 400ms" w={[6, 8]} />
               {children}
             </Link>
           ) : (
