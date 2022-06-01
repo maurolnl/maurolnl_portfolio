@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import {motion} from "framer-motion";
 
-import image_test from "../assets/test.png";
+import hero_image from "../assets/hero.jpg";
 import {sideAnimation} from "../animation/animations";
 
 import SideLinks from "./SideLinks";
@@ -42,7 +42,7 @@ const Hero = () => {
             variants={sideAnimation}
             width={596}
           >
-            <Image priority alt={"hero-me"} layout="fill" objectFit="cover" src={image_test.src} />
+            <Image priority alt={"hero-me"} layout="fill" objectFit="cover" src={hero_image.src} />
           </MotionBox>
           <Box display={["block", "block", "block", "none"]}>
             <Heading color="neutral.900" display={"flex"} size={headingVariant}>
