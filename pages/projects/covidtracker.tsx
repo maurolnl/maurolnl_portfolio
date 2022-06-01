@@ -1,6 +1,6 @@
 import React from "react";
 import {NextPage} from "next";
-import {Heading, Link, Stack, Text, useBreakpointValue} from "@chakra-ui/react";
+import {Link, Stack, Text, useBreakpointValue} from "@chakra-ui/react";
 import {motion} from "framer-motion";
 import {NextSeo} from "next-seo";
 

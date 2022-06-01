@@ -1,10 +1,7 @@
 import React from "react";
 import NextLink from "next/link";
 import {Button, Link} from "@chakra-ui/react";
-import {motion} from "framer-motion";
 import {ArrowForwardIcon, ArrowBackIcon} from "@chakra-ui/icons";
-
-import ArrowIcon from "./ArrowIcon";
 
 interface Props {
   href?: string;
@@ -14,8 +11,6 @@ interface Props {
   children?: React.ReactNode;
 }
 const ForwardLink: React.FC<Props> = ({href, display, variant, padding, children}) => {
-  const MotionLink = motion(Link);
-
   return (
     <>
       {href ? (
