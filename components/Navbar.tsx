@@ -36,7 +36,9 @@ const Navbar = () => {
         <InternalLink href={"/projects"} isActive={isProjects}>
           Projects
         </InternalLink>
-        <InternalLink href={"/"}>CV</InternalLink>
+        <InternalLink isCV isExternal href={"/cv/Mauro_Leonel_Quiroga_CV_English.pdf"}>
+          CV
+        </InternalLink>
       </Stack>
       <Button
         _active={{textDecoration: "underline", backgroundColor: "transparent"}}

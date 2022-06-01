@@ -113,7 +113,11 @@ const Menu: React.FC<Props> = ({isOpen, placement, size, onClose}) => {
                   textTransform="uppercase"
                 />
               </InternalLink>
-              <InternalLink href={"/"} onClick={onClose}>
+              <InternalLink
+                isExternal
+                href={"/cv/Mauro_Leonel_Quiroga_CV_English.pdf"}
+                onClick={onClose}
+              >
                 <HeadingAnimated
                   borderBottom={router.pathname.includes("cv") ? "5px solid black" : undefined}
                   display="inline-block"
