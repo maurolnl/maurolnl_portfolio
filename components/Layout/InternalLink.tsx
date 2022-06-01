@@ -1,13 +1,15 @@
 import React from "react";
 import NextLink from "next/link";
-import {Link} from "@chakra-ui/react";
+import {Link, Stack} from "@chakra-ui/react";
 import {motion} from "framer-motion";
+import {ExternalLinkIcon} from "@chakra-ui/icons";
 
 interface Props {
   href: string;
   children?: React.ReactNode;
   variant?: string;
   isExternal?: boolean;
+  isCV?: boolean;
   isActive?: boolean;
   isNotHoverable?: boolean;
   onClick?: () => void;
@@ -17,6 +19,7 @@ const InternalLink: React.FC<Props> = ({
   href,
   variant,
   isExternal,
+  isCV,
   isNotHoverable,
   onClick,
   children,
@@ -36,19 +39,27 @@ const InternalLink: React.FC<Props> = ({
           {children}
         </MotionLink>
       ) : (
-        <MotionLink
-          _hover={{textDecoration: "none", color: "brand.700", borderColor: "brand.700"}}
-          borderBottom="2px solid transparent"
-          borderColor={isActive ? "brand.700" : undefined}
-          color={isActive ? "brand.700" : undefined}
-          isExternal={isExternal}
-          transition={{duration: 0.4, ease: "easeInOut"}}
-          variant={variant}
-          whileHover={{y: -1, opacity: 0.9}}
-          onClick={onClick}
-        >
-          {children}
-        </MotionLink>
+        <Stack alignItems="center" direction="row">
+          <Link
+            _active={{textDecoration: "none", backgroundSize: "0 0.1em, 100% 0.1em"}}
+            _hover={{textDecoration: "none", backgroundSize: "0 0.1em, 100% 0.1em"}}
+            background="linear-gradient(to right, rgba(100, 200, 200, 0), rgba(100, 200, 200, 0)),
+          linear-gradient(to right, rgba(88, 111, 124, 1), rgba(88, 111, 124, 1), rgba(88, 111, 124, 1))"
+            backgroundPosition="100% 100%, 0 100%"
+            backgroundRepeat="no-repeat"
+            backgroundSize=" 100% 0.1em, 0 0.1em"
+            borderBottom="2px solid transparent"
+            borderColor={isActive ? "brand.700" : undefined}
+            color="neutral.900"
+            isExternal={isExternal}
+            transition="background-size 400ms"
+            variant={variant}
+            onClick={onClick}
+          >
+            {children}
+          </Link>
+          {isCV ? <ExternalLinkIcon h={4} w={4} /> : ""}
+        </Stack>
       )}
     </NextLink>
   );
