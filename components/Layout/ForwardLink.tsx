@@ -2,6 +2,7 @@ import React from "react";
 import NextLink from "next/link";
 import {Button, Link} from "@chakra-ui/react";
 import {motion} from "framer-motion";
+import {ArrowForwardIcon, ArrowBackIcon} from "@chakra-ui/icons";
 
 import ArrowIcon from "./ArrowIcon";
 
@@ -19,57 +20,78 @@ const ForwardLink: React.FC<Props> = ({href, display, variant, padding, children
     <>
       {href ? (
         <NextLink passHref href={href}>
-          <MotionLink
-            _hover={{textDecoration: "none", borderColor: "brand.700"}}
-            backgroundColor={"transparent"}
-            border="1px solid black"
-            borderRadius="1px"
-            cursor={"pointer"}
-            display={display ? display : "block"}
-            fontSize={[16, 18, 20]}
-            height={"fit-content"}
-            padding={padding ? padding : ["6px 12px", "6px 12px", "6px 12px", "12px 16px"]}
-            transition={{duration: 0.2, ease: "easeInOut"}}
-            whileHover={{x: 1, y: 1}}
-            whiteSpace="nowrap"
-            width={"fit-content"}
-          >
-            {variant ? (
-              <>
-                <ArrowIcon boxSize={[6, 8, 12]} paddingLeft={2} transform="rotate(180deg)" />
-                {children}
-              </>
-            ) : (
-              <>
-                {children}
-                <ArrowIcon boxSize={[6, 8, 12]} paddingLeft={2} />
-              </>
-            )}
-          </MotionLink>
+          {variant ? (
+            <Link
+              _active={{textDecoration: "none", backgroundSize: "0 0.1em, 30% 0.1em"}}
+              _hover={{textDecoration: "none", backgroundSize: "0 0.1em, 30% 0.1em"}}
+              background="linear-gradient(to right, rgba(100, 200, 200, 0), rgba(100, 200, 200, 0)),
+            linear-gradient(to right, rgba(119, 76, 96, 1), rgba(119, 76, 96, 1), rgba(119, 76, 96, 1))"
+              backgroundColor={"transparent"}
+              backgroundPosition="100% 100%"
+              backgroundRepeat="no-repeat"
+              backgroundSize=" 100% 0.1em, 0 0.1em"
+              cursor={"pointer"}
+              display={display ? display : "block"}
+              fontSize={[16, 18, 20]}
+              height={"fit-content"}
+              sx={{
+                "&:hover > svg": {transform: "translate(0px, -1px) scale(1.1)"},
+                "&:hover > svg > path": {fill: "#774C60"},
+              }}
+              transition="background-size 400ms"
+              whiteSpace="nowrap"
+              width={"fit-content"}
+            >
+              <ArrowBackIcon h={[4, 5]} paddingLeft={2} w={[6, 8]} />
+              {children}
+            </Link>
+          ) : (
+            <Link
+              _active={{textDecoration: "none", backgroundSize: "0 0.1em, 30% 0.1em"}}
+              _hover={{textDecoration: "none", backgroundSize: "0 0.1em, 30% 0.1em"}}
+              background="linear-gradient(to right, rgba(100, 200, 200, 0), rgba(100, 200, 200, 0)),
+          linear-gradient(to right, rgba(119, 76, 96, 1), rgba(119, 76, 96, 1), rgba(119, 76, 96, 1))"
+              backgroundColor={"transparent"}
+              backgroundPosition="100% 100%, 0 100%"
+              backgroundRepeat="no-repeat"
+              backgroundSize=" 100% 0.1em, 0 0.1em"
+              cursor={"pointer"}
+              display={display ? display : "block"}
+              fontSize={[16, 18, 20]}
+              height={"fit-content"}
+              sx={{
+                "&:hover > svg": {transform: "translate(0px, -1px) scale(1.1)"},
+                "&:hover > svg > path": {fill: "#774C60"},
+              }}
+              transition="background-size 400ms"
+              whiteSpace="nowrap"
+              width={"fit-content"}
+            >
+              {children}
+              <ArrowForwardIcon h={[4, 5]} paddingLeft={2} transition="all 400ms" w={[6, 8]} />
+            </Link>
+          )}
         </NextLink>
       ) : (
         <Button
           isDisabled
           _hover={{backgroundColor: "transparent"}}
           backgroundColor={"transparent"}
-          border="1px solid black"
-          borderRadius="1px"
           cursor="not-allowed"
           fontSize={[16, 18, 20]}
           fontWeight="500"
           height={"fit-content"}
-          padding={padding ? padding : ["6px 12px", "6px 12px", "6px 12px", "12px 16px"]}
           width={"fit-content"}
         >
           {variant ? (
             <>
-              <ArrowIcon boxSize={[6, 8, 12]} paddingLeft={2} transform="rotate(180deg)" />
+              <ArrowForwardIcon h={[4, 5]} paddingLeft={2} transform="rotate(180deg)" w={[6, 8]} />
               {children}
             </>
           ) : (
             <>
               {children}
-              <ArrowIcon boxSize={[6, 8, 12]} paddingLeft={2} />
+              <ArrowForwardIcon h={[4, 5]} paddingLeft={2} w={[6, 8]} />
             </>
           )}
         </Button>

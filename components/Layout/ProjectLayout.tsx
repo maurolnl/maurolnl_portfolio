@@ -57,6 +57,7 @@ const ProjectLayout: React.FC<Props> = ({
             <Stack alignItems="center" direction="row" justifyContent={"space-between"}>
               <HeadingAnimated size={headingVariant} text={"Projects"} />
               <Stack
+                alignItems="center"
                 direction="row"
                 display={["flex", "flex", "flex", "flex", "flex", "none"]}
                 gap={[0, 0, 2, 4]}
@@ -125,7 +126,12 @@ const ProjectLayout: React.FC<Props> = ({
           {children}
         </Stack>
 
-        <Stack direction="row" display={["none", "none", "none", "none", "none", "flex"]} gap={4}>
+        <Stack
+          alignItems="center"
+          direction="row"
+          display={["none", "none", "none", "none", "none", "flex"]}
+          gap={4}
+        >
           <ForwardLink href={prevLink} padding={["5px 25px"]} variant="invert">
             Prev
           </ForwardLink>
