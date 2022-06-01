@@ -43,24 +43,15 @@ const InternalLink: React.FC<Props> = ({
       ) : (
         <Stack alignItems="center" direction="row">
           <Link
-            _active={
-              !isActive && !isMenu
-                ? {textDecoration: "none", backgroundSize: "0 0.1em, 100% 0.1em"}
-                : {}
-            }
-            _hover={
-              !isActive && !isMenu
-                ? {textDecoration: "none", backgroundSize: "0 0.1em, 100% 0.1em"}
-                : {}
-            }
+            _active={!isMenu ? {textDecoration: "none", backgroundSize: "0 0.1em, 100% 0.1em"} : {}}
+            _hover={!isMenu ? {textDecoration: "none", backgroundSize: "0 0.1em, 100% 0.1em"} : {}}
             background="linear-gradient(to right, rgba(100, 200, 200, 0), rgba(100, 200, 200, 0)),
           linear-gradient(to right, rgba(88, 111, 124, 1), rgba(88, 111, 124, 1), rgba(88, 111, 124, 1))"
             backgroundPosition="100% 100%, 0 100%"
             backgroundRepeat="no-repeat"
-            backgroundSize=" 100% 0.1em, 0 0.1em"
+            backgroundSize={isActive ? "0 0.1em, 100% 0.1em" : "100% 0.1em, 0 0.1em"}
             borderBottom="2px solid transparent"
-            borderColor={isActive ? "brand.700" : undefined}
-            color="neutral.900"
+            color={"neutral.900"}
             isExternal={isExternal}
             transition="background-size 400ms"
             variant={variant}
